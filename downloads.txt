@@ -1,6 +1,9 @@
 #!/bin/sh
 
+set -e
+
 mkdir -p downloads
+test -d downloads
 cd downloads
 wget --continue \
      http://ftp.gnu.org/gnu/binutils/binutils-2.22.tar.bz2 \
@@ -8,4 +11,4 @@ wget --continue \
      ftp://sources.redhat.com/pub/newlib/newlib-1.20.0.tar.gz \
      http://ftp.gnu.org/gnu/gdb/gdb-7.4.1.tar.bz2
 
-echo "Now call 00createFolders.sh"
+echo "Now call 00createFolders.sh (or make)"
