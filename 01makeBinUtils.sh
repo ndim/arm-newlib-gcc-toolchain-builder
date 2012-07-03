@@ -8,8 +8,10 @@ fi
     --enable-interwork --enable-multilib --with-gnu-ld --with-gnu-as \
     --disable-werror )
 # keep build quiet so we can see any stderr reports.
-cat quiet binutils_build/Makefile > Makefile
-mv Makefile binutils_build/Makefile
+if test -f quiet; then
+    cat quiet binutils_build/Makefile > Makefile
+    mv Makefile binutils_build/Makefile
+fi
 # note, make.log contains the stderr output of the build.
 (cd binutils_build ; make all install 2>&1 | tee $BUILDSOURCES/make.log)
 

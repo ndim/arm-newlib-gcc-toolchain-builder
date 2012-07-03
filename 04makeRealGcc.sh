@@ -15,7 +15,9 @@ fi
 # need compile w/wo shared libs??
 
 # keep build quiet so we can see any stderr reports.
-cat quiet gcc_build/Makefile > $BUILDSOURCES/Makefile
-mv $BUILDSOURCES/Makefile gcc_build/Makefile
+if test -f quiet; then
+    cat quiet gcc_build/Makefile > $BUILDSOURCES/Makefile
+    mv $BUILDSOURCES/Makefile gcc_build/Makefile
+fi
 # note, make.log contains the stderr output of the build.
 (cd gcc_build ; make all install 2>&1 | tee $BUILDSOURCES/make.log)

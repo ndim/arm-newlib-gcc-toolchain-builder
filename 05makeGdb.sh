@@ -9,7 +9,9 @@ fi
    --with-gnu-ld --with-gnu-as \
 	--disable-werror )
 # keep build quiet so we can see any stderr reports.
-cat quiet gdb_build/Makefile > $BUILDSOURCES/Makefile
-mv $BUILDSOURCES/Makefile gdb_build/Makefile
+if test -f quiet; then
+    cat quiet gdb_build/Makefile > $BUILDSOURCES/Makefile
+    mv $BUILDSOURCES/Makefile gdb_build/Makefile
+fi
 # note, make.log contains the stderr output of the build.
 (cd gdb_build ; make all install 2>&1 | tee $BUILDSOURCES/make.log)
