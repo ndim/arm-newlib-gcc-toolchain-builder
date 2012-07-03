@@ -7,7 +7,9 @@ if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX"; exit 0;
 fi
 
-(cd gcc_build && rm -rf * ; \
+check_builddir gcc
+
+(cd "$tool_builddir" && rm -rf * && \
 ../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$PREFIX \
    --with-gnu-as --with-gnu-ld --enable-languages=c \
    --enable-interwork --enable-multilib --with-newlib --with-system-zlib \
@@ -22,11 +24,7 @@ fi
 # for further information you may check:
 # http://gcc.gnu.org/ml/gcc/2008-03/msg00515.html
 
-# keep build quiet so we can see any stderr reports.
-if test -f quiet; then
-    cat quiet gcc_build/Makefile > $BUILDSOURCES/Makefile
-    mv $BUILDSOURCES/Makefile gcc_build/Makefile
-fi
+quieten_make
 
 # note, make.log contains the stderr output of the build.
-(cd gcc_build ; make all install 2>&1 ) | tee $BUILDSOURCES/make.log
+(cd "$tool_builddir" && make all install 2>&1 ) | tee $BUILDSOURCES/make.log

@@ -5,3 +5,17 @@ export BUILDSOURCES="$PWD"
 
 set -e
 set -x
+
+check_builddir() {
+    tool_builddir="${1}_build"
+    test -n "$tool_builddir"
+    test -d "$tool_builddir"
+}
+
+# keep build quiet so we can see any stderr reports.
+quieten_make() {
+    if test -f quiet; then
+        cat quiet "$tool_builddir/Makefile" > Makefile.tmp
+        mv Makefile.tmp "$tool_builddir/Makefile"
+    fi
+}
