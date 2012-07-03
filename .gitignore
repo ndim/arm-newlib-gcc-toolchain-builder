@@ -1,4 +1,9 @@
 /*_build/
 /*_sources/
+/binutils-*/
+/newlib-*/
+/gcc-*/
+/gdb-*/
+/bootgcc-prefix/
 /make.log
 /nohup.out
