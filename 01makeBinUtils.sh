@@ -19,4 +19,4 @@ if test -f quiet; then
 fi
 
 # note, make.log contains the stderr output of the build.
-(cd binutils_build ; make all install 2>&1 | tee $BUILDSOURCES/make.log)
+(cd binutils_build ; make all install 2>&1 ) | tee $BUILDSOURCES/make.log

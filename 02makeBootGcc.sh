@@ -20,4 +20,4 @@ if test -f quiet; then
 fi
 
 # note, make.log contains the stderr output of the build.
-(cd bootgcc_build ; make all-gcc install-gcc 2>&1 | tee $BUILDSOURCES/make.log)
+(cd bootgcc_build ; make all-gcc install-gcc 2>&1 ) | tee $BUILDSOURCES/make.log
