@@ -3,7 +3,6 @@
 if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX"; exit 0;
 fi
-export PATH=$PATH:$PREFIX/$TARGET
 # make sure build area is clean
 rm -rf $PREFIX/newlib_build/*
 (cd $PREFIX/newlib_build ; \

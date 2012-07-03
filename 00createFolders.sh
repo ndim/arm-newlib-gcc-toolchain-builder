@@ -3,7 +3,6 @@
 if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX in ./environ.sh !"; exit 0;
 fi
-export PATH=$PATH:$PREFIX/$TARGET
 
 sources="binutils-2.22 gcc-4.7.1 gdb-7.4.1"
 gdb_dir="gdb-7.4.1"

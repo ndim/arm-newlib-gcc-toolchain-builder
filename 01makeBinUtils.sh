@@ -3,7 +3,6 @@
 if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX"; exit 0;
 fi
-export PATH=$PATH:$PREFIX/$TARGET
 (cd binutils_build ; \
 ../binutils_sources/configure -v --quiet  --target=$TARGET --prefix=$PREFIX \
     --enable-interwork --enable-multilib --with-gnu-ld --with-gnu-as \
