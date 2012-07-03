@@ -14,10 +14,13 @@ fi
    --with-headers=${PREFIX}/newlib_sources/newlib/libc/include \
    --disable-werror )
 
-# gcc 4.6.2
-# with-system-zlib: Dirty fix "Link tests are not allowed after GCC_NO_EXECUTABLES"
-# link to the system installed copy of the Zlib library rather than gccs internal version
-# need compile w/wo shared libs??
+# switch "with-system-zlib":
+# if we build gcc & newlib for bare metal targets we do not have any linker file nor any crt.o
+# therefore we must avoid some gcc configure scripts trying to do a link test.
+# up to now there is no direct solution for that circumstance. as a workaround we link to the
+# system installed copy of the Zlib library rather than gccs internal version
+# for further information you may check:
+# http://gcc.gnu.org/ml/gcc/2008-03/msg00515.html
 
 # keep build quiet so we can see any stderr reports.
 if test -f quiet; then

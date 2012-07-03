@@ -8,8 +8,8 @@ if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 fi
 
 sources="binutils-2.22 gcc-4.7.1 gdb-7.4.1"
-gdb_dir="gdb-7.4.1"
-#newlib is build in a seperate folder therefore is handled differently
+
+#newlib is build in a seperate folder therefore it is handled differently
 newlib_src="newlib-1.20.0"
 
 newlib_pkg() {
@@ -51,15 +51,8 @@ for src in $sources ; do
 		if [ -f downloads/$src.tar.gz ]; then
 			tar -zxf downloads/$src.tar.gz ;
 		fi
-		# gdb must be handled differently because package does not
-                # relate to packed folder name
-		if [ "$DIR" == "gdb_sources" ]; then
-			echo "rename directory $gdb_dir into $DIR"
-			mv $gdb_dir $DIR ;
-		else
-			echo "rename directory $src into $DIR"
-			mv $src $DIR ;
-		fi
+		echo "rename directory $src into $DIR"
+		mv $src $DIR ;
 	else
 		echo "OK" ;
 	fi
@@ -69,6 +62,11 @@ for src in $sources ; do
 		mkdir $DIR ;
 	fi
 done
+if [ ! -d "bootgcc_build" ] ; then 
+	echo "create bootgcc_build"
+	mkdir bootgcc_build ;
+fi
+
 # newlib gets done seperately
 newlib_pkg;
 
