@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e
+
 . ./environ.sh
 if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX in ./environ.sh !"; exit 0;
