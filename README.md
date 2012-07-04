@@ -33,3 +33,18 @@ Usage
              "GNU debugger"
 [newlib]:    http://sourceware.org/newlib/
              "newlib C library"
+
+
+TODO
+----
+
+  * Sort configure options for bootgcc and gcc and compare
+    differences.
+
+  * Determine what the t-arm-elf interworking stuff is about.
+
+  * Determine what goes differently when installing bootgcc into the
+    same place as gcc proper from installing them into different
+    places.
+
+  * Document the big picture and the mid-level whys.
