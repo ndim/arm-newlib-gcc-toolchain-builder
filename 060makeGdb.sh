@@ -10,10 +10,16 @@ fi
 setup_builddir gdb
 
 (cd "$tool_builddir" && rm -rf * && \
-../gdb_sources/configure -v --quiet --prefix=$REAL_PREFIX \
-   --target=$TARGET --enable-interwork --enable-multilib \
-   --with-gnu-ld --with-gnu-as \
-	--disable-werror )
+    ../gdb_sources/configure \
+    -v \
+    --quiet \
+    --prefix="$REAL_PREFIX" \
+    --target="$TARGET" \
+    --enable-interwork \
+    --enable-multilib \
+    --with-gnu-ld \
+    --with-gnu-as \
+    --disable-werror )
 
 quieten_make
 

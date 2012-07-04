@@ -10,11 +10,20 @@ fi
 setup_builddir gcc
 
 (cd "$tool_builddir" && rm -rf * && \
-../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$REAL_PREFIX \
-   --with-gnu-as --with-gnu-ld --enable-languages=c \
-   --enable-interwork --enable-multilib --with-newlib --with-system-zlib \
-   --with-headers=${REAL_PREFIX}/newlib_sources/newlib/libc/include \
-   --disable-werror )
+    ../gcc_sources/configure \
+    -v \
+    --quiet \
+    --target="$TARGET" \
+    --prefix="$REAL_PREFIX" \
+    --with-gnu-as \
+    --with-gnu-ld \
+    --enable-languages=c \
+    --enable-interwork \
+    --enable-multilib \
+    --with-newlib \
+    --with-system-zlib \
+    --with-headers="${REAL_PREFIX}/newlib_sources/newlib/libc/include" \
+    --disable-werror )
 
 # switch "with-system-zlib":
 # if we build gcc & newlib for bare metal targets we do not have any linker file nor any crt.o

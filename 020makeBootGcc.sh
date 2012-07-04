@@ -10,10 +10,18 @@ fi
 setup_builddir bootgcc
 
 (cd "$tool_builddir" && \
-../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$BOOT_PREFIX \
-   --with-newlib --without-headers --with-gnu-as \
-   --with-gnu-ld --disable-shared --enable-languages=c \
-   --disable-werror )
+    ../gcc_sources/configure \
+    -v \
+    --quiet \
+    --target="$TARGET" \
+    --prefix="$BOOT_PREFIX" \
+    --with-newlib \
+    --without-headers \
+    --with-gnu-as \
+    --with-gnu-ld \
+    --disable-shared \
+    --enable-languages=c \
+    --disable-werror )
 
 quieten_make
 

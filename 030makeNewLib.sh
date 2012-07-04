@@ -10,10 +10,17 @@ fi
 setup_builddir newlib
 
 (cd "$tool_builddir" && \
-    ../newlib_sources/configure -v --quiet --target=$TARGET --prefix=$REAL_PREFIX \
-    --disable-newlib-supplied-syscalls --enable-interwork --enable-multilib \
-    --with-gnu-ld --with-gnu-as --disable-newlib-io-float \
-   --disable-werror )
+    ../newlib_sources/configure \
+    -v --quiet \
+    --target="$TARGET" \
+    --prefix="$REAL_PREFIX" \
+    --disable-newlib-supplied-syscalls \
+    --enable-interwork \
+    --enable-multilib \
+    --with-gnu-ld \
+    --with-gnu-as \
+    --disable-newlib-io-float \
+    --disable-werror )
 
 quieten_make
 

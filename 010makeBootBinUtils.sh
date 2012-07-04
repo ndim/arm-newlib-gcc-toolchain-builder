@@ -10,8 +10,15 @@ fi
 setup_builddir binutils
 
 (cd "$tool_builddir" && \
-../binutils_sources/configure -v --quiet  --target=$TARGET --prefix=$BOOT_PREFIX \
-    --enable-interwork --enable-multilib --with-gnu-ld --with-gnu-as \
+    ../binutils_sources/configure \
+    -v \
+    --quiet \
+    --target="$TARGET" \
+    --prefix="$BOOT_PREFIX" \
+    --enable-interwork \
+    --enable-multilib \
+    --with-gnu-ld \
+    --with-gnu-as \
     --disable-werror )
 
 quieten_make
