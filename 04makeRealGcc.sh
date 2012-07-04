@@ -7,7 +7,7 @@ if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX"; exit 0;
 fi
 
-check_builddir gcc
+setup_builddir gcc
 
 (cd "$tool_builddir" && rm -rf * && \
 ../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$PREFIX \

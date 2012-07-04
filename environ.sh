@@ -6,10 +6,12 @@ export BUILDSOURCES="$PWD"
 set -e
 set -x
 
-check_builddir() {
+setup_builddir() {
     tool_builddir="${1}_build"
-    test -n "$tool_builddir"
-    test -d "$tool_builddir"
+    test -n  "$tool_builddir"
+    rm -rf   "$tool_builddir"
+    mkdir -p "$tool_builddir"
+    test -d  "$tool_builddir"
 }
 
 # keep build quiet so we can see any stderr reports.

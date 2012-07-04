@@ -7,7 +7,7 @@ if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX"; exit 0;
 fi
 
-check_builddir binutils
+setup_builddir binutils
 
 (cd "$tool_builddir" && \
 ../binutils_sources/configure -v --quiet  --target=$TARGET --prefix=$PREFIX \

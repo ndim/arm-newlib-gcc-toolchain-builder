@@ -7,7 +7,7 @@ if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX"; exit 0;
 fi
 
-check_builddir bootgcc
+setup_builddir bootgcc
 
 (cd "$tool_builddir" && \
 ../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$PREFIX \

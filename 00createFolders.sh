@@ -15,9 +15,8 @@ newlib_src="newlib-1.20.0"
 newlib_pkg() {
 	echo -n "check existance of directory: $PREFIX/newlib_sources ($newlib_src) - " ;
 	if [ ! -d $PREFIX/newlib_sources ] ; then
-		echo "create newlib_build"
-		mkdir -p $PREFIX/newlib_build;
 		echo "NO ... inflating from downloads"
+		mkdir -p $PREFIX
 		tar zxCf $PREFIX downloads/$newlib_src.tar.gz;
 		echo "rename directory $PREFIX/$newlib_src into $PREFIX/newlib_sources"
 		mv $PREFIX/$newlib_src $PREFIX/newlib_sources;
@@ -36,8 +35,6 @@ for src in $sources $newlib_src ; do
 	fi
 done
 
-# make target directory.
-if [ ! -d $PREFIX ] ; then mkdir -p $PREFIX ; fi
 
 # inflate sources
 for src in $sources ; do
@@ -56,16 +53,7 @@ for src in $sources ; do
 	else
 		echo "OK" ;
 	fi
-	DIR=`echo $src | sed 's/-.*//'`_build;
-	if [ ! -d $DIR ] ; then 
-		echo "create $DIR"
-		mkdir $DIR ;
-	fi
 done
-if [ ! -d "bootgcc_build" ] ; then 
-	echo "create bootgcc_build"
-	mkdir bootgcc_build ;
-fi
 
 # newlib gets done seperately
 newlib_pkg;
