@@ -7,7 +7,7 @@ if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX"; exit 0;
 fi
 
-setup_builddir "$PREFIX/newlib"
+setup_builddir newlib
 
 (cd "$tool_builddir" && \
     ../newlib_sources/configure -v --quiet --target=$TARGET --prefix=$PREFIX \
