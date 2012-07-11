@@ -3,17 +3,17 @@
 set -e
 
 . ./environ.sh
-if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
-	echo "You need to set: TARGET and PREFIX"; exit 0;
+if [[ "$TARGET" == ""  || "$PREFIXREAL" == "" ]] ; then
+	echo "You need to set: TARGET and PREFIXREAL"; exit 0;
 fi
 
 setup_builddir gcc
 
 (cd "$tool_builddir" && rm -rf * && \
-../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$PREFIX \
+../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$PREFIXREAL \
    --with-gnu-as --with-gnu-ld --enable-languages=c \
    --enable-interwork --enable-multilib --with-newlib --with-system-zlib \
-   --with-headers=${PREFIX}/newlib_sources/newlib/libc/include \
+   --with-headers=${PREFIXREAL}/newlib_sources/newlib/libc/include \
    --disable-werror )
 
 # switch "with-system-zlib":

@@ -3,14 +3,14 @@
 set -e
 
 . ./environ.sh
-if [[ "$TARGET" == ""  || "$PREFIX" == "" ]] ; then
-	echo "You need to set: TARGET and PREFIX"; exit 0;
+if [[ "$TARGET" == ""  || "$PREFIXREAL" == "" ]] ; then
+	echo "You need to set: TARGET and PREFIXREAL"; exit 0;
 fi
 
 setup_builddir gdb
 
 (cd "$tool_builddir" && rm -rf * && \
-../gdb_sources/configure -v --quiet --prefix=$PREFIX \
+../gdb_sources/configure -v --quiet --prefix=$PREFIXREAL \
    --target=$TARGET --enable-interwork --enable-multilib \
    --with-gnu-ld --with-gnu-as \
 	--disable-werror )

@@ -3,14 +3,14 @@
 set -e
 
 . ./environ.sh
-if [[ "$TARGET" == ""  || "$PREFIX2" == "" ]] ; then
-	echo "You need to set: TARGET and PREFIX2"; exit 0;
+if [[ "$TARGET" == ""  || "$PREFIXBOOT" == "" ]] ; then
+	echo "You need to set: TARGET and PREFIXBOOT"; exit 0;
 fi
 
 setup_builddir bootgcc
 
 (cd "$tool_builddir" && \
-../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$PREFIX2 \
+../gcc_sources/configure -v --quiet --target=$TARGET --prefix=$PREFIXBOOT \
    --with-newlib --without-headers --with-gnu-as \
    --with-gnu-ld --disable-shared --enable-languages=c \
    --disable-werror )
