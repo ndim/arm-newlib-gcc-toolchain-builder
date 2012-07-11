@@ -9,7 +9,7 @@ fi
 
 setup_builddir gcc
 
-(cd "$tool_builddir" && rm -rf * && \
+(cd "$tool_builddir" && \
     ../gcc_sources/configure \
     -v \
     --quiet \

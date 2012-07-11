@@ -9,7 +9,7 @@ fi
 
 setup_builddir gdb
 
-(cd "$tool_builddir" && rm -rf * && \
+(cd "$tool_builddir" && \
     ../gdb_sources/configure \
     -v \
     --quiet \
