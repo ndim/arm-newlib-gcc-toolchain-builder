@@ -17,10 +17,10 @@ setup_builddir newlib
 
 quieten_make
 
-#\todo fix: make.log
-cd "$tool_builddir" && make all install CC_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-gcc \
-                                        AS_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-as \
-                                        LD_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-ld \
-                                        AR_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-ar \
-                                        RANLIB_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-ranlib
-
+(cd "$tool_builddir" && make all install \
+    CC_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-gcc \
+    AS_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-as \
+    LD_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-ld \
+    AR_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-ar \
+    RANLIB_FOR_TARGET=$PREFIX2/bin/arm-none-eabi-ranlib \
+    2>&1 ) | tee $BUILDSOURCES/make.log
