@@ -17,10 +17,9 @@ setup_builddir newlib
 
 quieten_make
 
-(cd "$tool_builddir" && make all install \
+run_make all install \
     CC_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-gcc \
     AS_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-as \
     LD_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ld \
     AR_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ar \
-    RANLIB_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ranlib \
-    2>&1 ) | log_output
+    RANLIB_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ranlib

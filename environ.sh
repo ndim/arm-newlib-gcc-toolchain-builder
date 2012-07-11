@@ -23,6 +23,11 @@ quieten_make() {
     fi
 }
 
+# Run make
+run_make() {
+    make ${MAKE_FLAGS} -C "$tool_builddir" "$@" 2>&1 | log_output
+}
+
 # Log stdin to somewhere
 log_output() {
     tee "$BUILDSOURCES/make.log"

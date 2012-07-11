@@ -26,5 +26,4 @@ setup_builddir gcc
 
 quieten_make
 
-# note, make.log contains the stderr output of the build.
-(cd "$tool_builddir" && make all install 2>&1 ) | log_output
+run_make all install
