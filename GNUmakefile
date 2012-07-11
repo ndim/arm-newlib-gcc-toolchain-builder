@@ -1,12 +1,6 @@
 .PHONY: all
 all:
-	@set -x; for script in 0*.sh; do \
-		if bash "$$script"; then \
-			:; \
-		else \
-			exit "$$?"; \
-		fi; \
-	done
+	@set -ex; for script in [0-9]*.sh; do bash "$$script"; done
 
 .PHONY: clean
 clean:
