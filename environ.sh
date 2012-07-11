@@ -22,3 +22,8 @@ quieten_make() {
         mv Makefile.tmp "$tool_builddir/Makefile"
     fi
 }
+
+# Log stdin to somewhere
+log_output() {
+    tee "$BUILDSOURCES/make.log"
+}

@@ -23,4 +23,4 @@ quieten_make
     LD_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ld \
     AR_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ar \
     RANLIB_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ranlib \
-    2>&1 ) | tee $BUILDSOURCES/make.log
+    2>&1 ) | log_output
