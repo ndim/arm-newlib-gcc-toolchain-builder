@@ -3,17 +3,21 @@
 set -e
 
 . ./environ.sh
-if [[ "$TARGET" == ""  || "$REAL_PREFIX" == "" || "$BOOT_PREFIX" == "" ]] ; then
-	echo "You need to set: TARGET and REAL_PREFIX and BOOT_PREFIX"; exit 0;
+if [[ "$TARGET" == ""  || "$PREFIX_REAL" == "" || "$PREFIX_BOOT" == "" ]] ; then
+	echo "You need to set: TARGET and PREFIX_REAL and PREFIX_BOOT"; exit 0;
 fi
 
 setup_builddir newlib
 
+# $tool_builddir is a temporary random dir you need to build newlib
+# ../newlib_sources/ is the dir containing newlib sources
+# $PREFIX_REAL is where your destiny cross compiler will be installed to
+# $PREFIX_BOOT is the path where the compiler to compile the newlib is installed
 (cd "$tool_builddir" && \
     ../newlib_sources/configure \
     -v --quiet \
     --target="$TARGET" \
-    --prefix="$REAL_PREFIX" \
+    --prefix="$PREFIX_REAL" \
     --disable-newlib-supplied-syscalls \
     --enable-interwork \
     --enable-multilib \
@@ -25,8 +29,8 @@ setup_builddir newlib
 quieten_make
 
 run_make all install \
-    CC_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-gcc \
-    AS_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-as \
-    LD_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ld \
-    AR_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ar \
-    RANLIB_FOR_TARGET=$BOOT_PREFIX/bin/arm-none-eabi-ranlib
+    CC_FOR_TARGET="$PREFIX_BOOT/bin/${TARGET}-gcc" \
+    AS_FOR_TARGET="$PREFIX_BOOT/bin/${TARGET}-as" \
+    LD_FOR_TARGET="$PREFIX_BOOT/bin/${TARGET}-ld" \
+    AR_FOR_TARGET="$PREFIX_BOOT/bin/${TARGET}-ar" \
+    RANLIB_FOR_TARGET="$PREFIX_BOOT/bin/${TARGET}-ranlib"

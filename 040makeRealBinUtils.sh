@@ -3,8 +3,8 @@
 set -e
 
 . ./environ.sh
-if [[ "$TARGET" == ""  || "$REAL_PREFIX" == "" ]] ; then
-	echo "You need to set: TARGET and REAL_PREFIX"; exit 0;
+if [[ "$TARGET" == ""  || "$PREFIX_REAL" == "" ]] ; then
+	echo "You need to set: TARGET and PREFIX_REAL"; exit 0;
 fi
 
 setup_builddir binutils
@@ -14,7 +14,7 @@ setup_builddir binutils
     -v \
     --quiet \
     --target="$TARGET" \
-    --prefix="$REAL_PREFIX" \
+    --prefix="$PREFIX_REAL" \
     --enable-interwork \
     --enable-multilib \
     --with-gnu-ld \

@@ -9,11 +9,11 @@ clean:
 .PHONY: uninstall
 uninstall:
 	@source ./environ.sh; set +x; \
-	echo "Are you sure? Enter 'YES' to run 'rm -rf $$BOOT_PREFIX $$REAL_PREFIX'."; \
+	echo "Are you sure? Enter 'YES' to run 'rm -rf $$PREFIX_BOOT $$PREFIX_REAL'."; \
 	read answer; \
 	if test "$$answer" = "YES"; then \
 		set -x; \
-		rm -rf "$$BOOT_PREFIX" "$$REAL_PREFIX"; \
+		rm -rf "$$PREFIX_BOOT" "$$PREFIX_REAL"; \
 	else \
 		echo "Aborted uninstall."; \
 	fi

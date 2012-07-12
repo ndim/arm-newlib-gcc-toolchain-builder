@@ -3,8 +3,8 @@
 set -e
 
 . ./environ.sh
-if [[ "$TARGET" == ""  || "$REAL_PREFIX" == "" ]] ; then
-	echo "You need to set: TARGET and REAL_PREFIX"; exit 0;
+if [[ "$TARGET" == ""  || "$PREFIX_REAL" == "" ]] ; then
+	echo "You need to set: TARGET and PREFIX_REAL"; exit 0;
 fi
 
 setup_builddir gdb
@@ -13,7 +13,7 @@ setup_builddir gdb
     ../gdb_sources/configure \
     -v \
     --quiet \
-    --prefix="$REAL_PREFIX" \
+    --prefix="$PREFIX_REAL" \
     --target="$TARGET" \
     --enable-interwork \
     --enable-multilib \

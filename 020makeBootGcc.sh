@@ -3,8 +3,8 @@
 set -e
 
 . ./environ.sh
-if [[ "$TARGET" == ""  || "$BOOT_PREFIX" == "" ]] ; then
-	echo "You need to set: TARGET and BOOT_PREFIX"; exit 0;
+if [[ "$TARGET" == ""  || "$PREFIX_BOOT" == "" ]] ; then
+	echo "You need to set: TARGET and PREFIX_BOOT"; exit 0;
 fi
 
 setup_builddir bootgcc
@@ -14,7 +14,7 @@ setup_builddir bootgcc
     -v \
     --quiet \
     --target="$TARGET" \
-    --prefix="$BOOT_PREFIX" \
+    --prefix="$PREFIX_BOOT" \
     --with-newlib \
     --without-headers \
     --with-gnu-as \

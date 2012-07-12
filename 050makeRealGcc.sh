@@ -3,8 +3,8 @@
 set -e
 
 . ./environ.sh
-if [[ "$TARGET" == ""  || "$REAL_PREFIX" == "" ]] ; then
-	echo "You need to set: TARGET and REAL_PREFIX"; exit 0;
+if [[ "$TARGET" == ""  || "$PREFIX_REAL" == "" ]] ; then
+	echo "You need to set: TARGET and PREFIX_REAL"; exit 0;
 fi
 
 setup_builddir gcc
@@ -14,7 +14,7 @@ setup_builddir gcc
     -v \
     --quiet \
     --target="$TARGET" \
-    --prefix="$REAL_PREFIX" \
+    --prefix="$PREFIX_REAL" \
     --with-gnu-as \
     --with-gnu-ld \
     --enable-languages=c \
@@ -22,7 +22,7 @@ setup_builddir gcc
     --enable-multilib \
     --with-newlib \
     --with-system-zlib \
-    --with-headers="${REAL_PREFIX}/newlib_sources/newlib/libc/include" \
+    --with-headers="${PREFIX_REAL}/newlib_sources/newlib/libc/include" \
     --disable-werror )
 
 # switch "with-system-zlib":

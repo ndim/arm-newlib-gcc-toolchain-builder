@@ -1,7 +1,7 @@
 export TARGET="arm-none-eabi"
-export REAL_PREFIX="$HOME/DevelToolbin/binaries/armThumb-4.7.1"
-export BOOT_PREFIX="$HOME/DevelToolbin/trash_bootgcc"
-export PATH="$REAL_PREFIX/bin:$PATH"
+export PREFIX_REAL="$HOME/DevelToolbin/binaries/armThumb-4.7.1"
+export PREFIX_BOOT="$HOME/DevelToolbin/trash_bootgcc"
+export PATH="$PREFIX_REAL/bin:$PATH"
 export BUILDSOURCES="$PWD"
 
 set -e
