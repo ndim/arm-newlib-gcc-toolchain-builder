@@ -7,10 +7,9 @@ if [[ "$TARGET" == ""  || "$PREFIX_REAL" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX_REAL"; exit 0;
 fi
 
-setup_builddir gcc
+setup_dirs gcc
 
-(cd "$tool_builddir" && \
-    ../gcc_sources/configure \
+run_configure \
     -v \
     --quiet \
     --target="$TARGET" \
@@ -23,7 +22,7 @@ setup_builddir gcc
     --with-newlib \
     --with-system-zlib \
     --with-headers="${BUILDSOURCES}/newlib_sources/newlib/libc/include" \
-    --disable-werror )
+    --disable-werror
 
 # switch "with-system-zlib":
 # if we build gcc & newlib for bare metal targets we do not have any linker file nor any crt.o

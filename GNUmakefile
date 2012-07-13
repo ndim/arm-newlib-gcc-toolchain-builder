@@ -5,6 +5,7 @@ all:
 .PHONY: clean
 clean:
 	rm -rf *_build *_sources
+	rm -f *.*.log
 
 .PHONY: uninstall
 uninstall:
