@@ -22,7 +22,7 @@ setup_builddir gcc
     --enable-multilib \
     --with-newlib \
     --with-system-zlib \
-    --with-headers="${PREFIX_REAL}/newlib_sources/newlib/libc/include" \
+    --with-headers="${BUILDSOURCES}/newlib_sources/newlib/libc/include" \
     --disable-werror )
 
 # switch "with-system-zlib":
