@@ -7,10 +7,9 @@ if [[ "$TARGET" == ""  || "$PREFIX_REAL" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX_REAL"; exit 0;
 fi
 
-setup_builddir gdb
+setup_dirs gdb
 
-(cd "$tool_builddir" && \
-    ../gdb_sources/configure \
+run_configure \
     -v \
     --quiet \
     --prefix="$PREFIX_REAL" \
@@ -19,7 +18,7 @@ setup_builddir gdb
     --enable-multilib \
     --with-gnu-ld \
     --with-gnu-as \
-    --disable-werror )
+    --disable-werror
 
 quieten_make
 

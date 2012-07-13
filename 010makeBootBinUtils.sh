@@ -7,10 +7,10 @@ if [[ "$TARGET" == ""  || "$PREFIX_BOOT" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX_BOOT"; exit 0;
 fi
 
-setup_builddir binutils
+# FIXME: use boot specific builddir!
+setup_dirs binutils
 
-(cd "$tool_builddir" && \
-    ../binutils_sources/configure \
+run_configure \
     -v \
     --quiet \
     --target="$TARGET" \
@@ -19,7 +19,7 @@ setup_builddir binutils
     --enable-multilib \
     --with-gnu-ld \
     --with-gnu-as \
-    --disable-werror )
+    --disable-werror
 
 quieten_make
 

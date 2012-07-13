@@ -7,10 +7,9 @@ if [[ "$TARGET" == ""  || "$PREFIX_BOOT" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX_BOOT"; exit 0;
 fi
 
-setup_builddir bootgcc
+setup_dirs bootgcc gcc
 
-(cd "$tool_builddir" && \
-    ../gcc_sources/configure \
+run_configure \
     -v \
     --quiet \
     --target="$TARGET" \
@@ -21,7 +20,7 @@ setup_builddir bootgcc
     --with-gnu-ld \
     --disable-shared \
     --enable-languages=c \
-    --disable-werror )
+    --disable-werror
 
 quieten_make
 

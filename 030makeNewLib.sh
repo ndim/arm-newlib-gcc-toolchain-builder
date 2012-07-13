@@ -7,14 +7,13 @@ if [[ "$TARGET" == ""  || "$PREFIX_REAL" == "" || "$PREFIX_BOOT" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX_REAL and PREFIX_BOOT"; exit 0;
 fi
 
-setup_builddir newlib
+setup_dirs newlib
 
 # $tool_builddir is a temporary random dir you need to build newlib
 # ../newlib_sources/ is the dir containing newlib sources
 # $PREFIX_REAL is where your destiny cross compiler will be installed to
 # $PREFIX_BOOT is the path where the compiler to compile the newlib is installed
-(cd "$tool_builddir" && \
-    ../newlib_sources/configure \
+run_configure \
     -v --quiet \
     --target="$TARGET" \
     --prefix="$PREFIX_REAL" \
@@ -24,7 +23,7 @@ setup_builddir newlib
     --with-gnu-ld \
     --with-gnu-as \
     --disable-newlib-io-float \
-    --disable-werror )
+    --disable-werror
 
 quieten_make
 
