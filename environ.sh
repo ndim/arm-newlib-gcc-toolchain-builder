@@ -20,6 +20,8 @@ setup_dirs() {
     fi
     test -n  "$tool_srcdir"
     test -d  "$tool_srcdir"
+
+    rm -f "$BUILDSOURCES/$(basename "$0" .sh)".*.log
 }
 
 # keep build quiet so we can see any stderr reports.
@@ -32,15 +34,17 @@ quieten_make() {
 
 # Run configure
 run_configure() {
-    cd "$tool_builddir" && "../${tool_srcdir}/configure" "$@"
+    pushd "$tool_builddir"
+    "../${tool_srcdir}/configure" "$@" 2>&1 | log_output configure
+    popd
 }
 
 # Run make
 run_make() {
-    make ${MAKE_FLAGS} -C "$tool_builddir" "$@" 2>&1 | log_output
+    make ${MAKE_FLAGS} -C "$tool_builddir" "$@" 2>&1 | log_output make
 }
 
 # Log stdin to somewhere
 log_output() {
-    tee "$BUILDSOURCES/make.log"
+    tee "$BUILDSOURCES/$(basename "$0" .sh).${1-undefined}.log"
 }
