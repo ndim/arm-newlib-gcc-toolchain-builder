@@ -7,8 +7,7 @@ if [[ "$TARGET" == ""  || "$PREFIX_BOOT" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX_BOOT"; exit 0;
 fi
 
-# FIXME: use boot specific builddir!
-setup_dirs binutils
+setup_dirs bootbinutils binutils
 
 run_configure \
     -v \
