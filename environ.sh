@@ -41,7 +41,15 @@ run_configure() {
 
 # Run make
 run_make() {
-    make ${MAKE_FLAGS} -C "$tool_builddir" CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4" "$@" 2>&1 | log_output make
+    cflags=""
+    cflags="$cflags -O2 -g"
+    cflags="$cflags -pipe"
+    cflags="$cflags -Wall"
+    cflags="$cflags -Wp,-D_FORTIFY_SOURCE=2"
+    cflags="$cflags -fexceptions"
+    cflags="$cflags -fstack-protector --param=ssp-buffer-size=4"
+    cflags="$cflags "
+    make ${MAKE_FLAGS} -C "$tool_builddir" CFLAGS="$cflags" "$@" 2>&1 | log_output make
 }
 
 # Log stdin to somewhere
