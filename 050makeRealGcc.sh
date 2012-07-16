@@ -10,8 +10,6 @@ fi
 setup_dirs gcc
 
 run_configure \
-    -v \
-    --quiet \
     --target="$TARGET" \
     --prefix="$PREFIX_REAL" \
     --with-gnu-as \

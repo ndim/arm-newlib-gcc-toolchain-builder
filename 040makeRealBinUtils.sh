@@ -10,8 +10,6 @@ fi
 setup_dirs binutils
 
 run_configure \
-    -v \
-    --quiet \
     --target="$TARGET" \
     --prefix="$PREFIX_REAL" \
     --enable-interwork \

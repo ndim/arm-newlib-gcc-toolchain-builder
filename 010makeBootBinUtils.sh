@@ -10,8 +10,6 @@ fi
 setup_dirs bootbinutils binutils
 
 run_configure \
-    -v \
-    --quiet \
     --target="$TARGET" \
     --prefix="$PREFIX_BOOT" \
     --enable-interwork \

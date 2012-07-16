@@ -10,8 +10,6 @@ fi
 setup_dirs gdb
 
 run_configure \
-    -v \
-    --quiet \
     --prefix="$PREFIX_REAL" \
     --target="$TARGET" \
     --enable-interwork \

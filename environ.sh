@@ -27,7 +27,7 @@ setup_dirs() {
 # Run configure
 run_configure() {
     pushd "$tool_builddir"
-    "../${tool_srcdir}/configure" --disable-nls "$@" 2>&1 | log_output configure
+    "../${tool_srcdir}/configure" --disable-nls -v --quiet "$@" 2>&1 | log_output configure
     popd
 }
 

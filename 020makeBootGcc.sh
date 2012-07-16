@@ -10,8 +10,6 @@ fi
 setup_dirs bootgcc gcc
 
 run_configure \
-    -v \
-    --quiet \
     --target="$TARGET" \
     --prefix="$PREFIX_BOOT" \
     --with-newlib \

@@ -14,8 +14,6 @@ setup_dirs newlib
 # $PREFIX_REAL is where your destiny cross compiler will be installed to
 # $PREFIX_BOOT is the path where the compiler to compile the newlib is installed
 run_configure \
-    -v \
-    --quiet \
     --target="$TARGET" \
     --prefix="$PREFIX_REAL" \
     --disable-newlib-supplied-syscalls \
