@@ -20,6 +20,4 @@ run_configure \
     --with-gnu-as \
     --disable-werror
 
-quieten_make
-
 run_make all install

@@ -32,6 +32,4 @@ run_configure \
 # for further information you may check:
 # http://gcc.gnu.org/ml/gcc/2008-03/msg00515.html
 
-quieten_make
-
 run_make all install

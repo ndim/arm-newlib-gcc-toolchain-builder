@@ -24,14 +24,6 @@ setup_dirs() {
     rm -f "$BUILDSOURCES/$(basename "$0" .sh)".*.log
 }
 
-# keep build quiet so we can see any stderr reports.
-quieten_make() {
-    if test -f quiet; then
-        cat quiet "$tool_builddir/Makefile" > Makefile.tmp
-        mv Makefile.tmp "$tool_builddir/Makefile"
-    fi
-}
-
 # Run configure
 run_configure() {
     pushd "$tool_builddir"

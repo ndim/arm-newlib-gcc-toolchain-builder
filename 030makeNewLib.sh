@@ -25,8 +25,6 @@ run_configure \
     --disable-newlib-io-float \
     --disable-werror
 
-quieten_make
-
 run_make all install \
     CC_FOR_TARGET="$PREFIX_BOOT/bin/${TARGET}-gcc" \
     AS_FOR_TARGET="$PREFIX_BOOT/bin/${TARGET}-as" \

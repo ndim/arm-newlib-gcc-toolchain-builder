@@ -22,6 +22,4 @@ run_configure \
     --enable-languages=c \
     --disable-werror
 
-quieten_make
-
 run_make all-gcc install-gcc
