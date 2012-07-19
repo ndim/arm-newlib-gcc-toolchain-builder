@@ -12,7 +12,6 @@ setup_dirs binutils
 run_configure \
     --target="$TARGET" \
     --prefix="$PREFIX_REAL" \
-    --enable-interwork \
     --enable-multilib \
     --with-gnu-ld \
     --with-gnu-as \

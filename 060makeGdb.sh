@@ -12,7 +12,6 @@ setup_dirs gdb
 run_configure \
     --prefix="$PREFIX_REAL" \
     --target="$TARGET" \
-    --enable-interwork \
     --enable-multilib \
     --with-gnu-ld \
     --with-gnu-as \

@@ -12,7 +12,6 @@ setup_dirs bootbinutils binutils
 run_configure \
     --target="$TARGET" \
     --prefix="$PREFIX_BOOT" \
-    --enable-interwork \
     --enable-multilib \
     --with-gnu-ld \
     --with-gnu-as \

@@ -12,7 +12,6 @@ setup_dirs bootgcc gcc
 run_configure \
     --target="$TARGET" \
     --prefix="$PREFIX_BOOT" \
-    --with-newlib \
     --without-headers \
     --with-gnu-as \
     --with-gnu-ld \
