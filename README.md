@@ -31,8 +31,8 @@ Specifically, these scripts build
   * Run `make` to run all build step scripts `[0-9]*.sh` in sequence,
     or manually run them in sequence.
 
-  * Run `make clean' to clean up all build and source directories, and
-    `$PREFIX_BOOT'.
+  * Run `make clean` to clean up all build and source directories, and
+    `$PREFIX_BOOT`.
 
 
 
@@ -40,11 +40,11 @@ Specifically, these scripts build
 
 This works with two directories:
 
-   `$BUILDSOURCES'  Source code, build directories, bootstrap install.
-   `$PREFIX_REAL'   Where the real toolchain will be installed.
+   `$BUILDSOURCES`  Source code, build directories, bootstrap install.
+   `$PREFIX_REAL`   Where the real toolchain will be installed.
 
 The bootstrap installation of binutils and gcc is located in a
-subdirectory of `$BUILDSOURCES'.
+subdirectory of `$BUILDSOURCES`.
 
 The toolchain build works in the following stages:
 
@@ -59,7 +59,7 @@ working toolchain to be built eventually.
 
 ### The bootstrap stage
 
-very simple. just build a "light edition" toolchain (without any libc) to cross compile working arm-libc.
+very simple. just build a "light edition" toolchain (without any libc) in order to cross compile a working arm-libc.
 configuration should be noncritical. if you already have a working arm toolchain you can skip this step.
 
 
@@ -94,7 +94,7 @@ _--disable-werror:_
 
 >do not cancel the build on warnings
 
-__Note 1:__ the switch `--enable-interwork` does not have any effect
+__Note 1:__ the switch `--enable-interwork` does not have any effect (tbd)
 
 __Note 2:__ for targets `#if __ARM_ARCH__ < 5` like ARM7TDMI (non-FPU) newlib will handle
 float as soft in ieee754-sf.S
@@ -105,7 +105,7 @@ float as soft in ieee754-sf.S
 _--enable-multilib:_
 
 >compile libraries multiple times for different build
-options (e.g. thumb etc.). you may check also `arm-none-eabi-gcc -print-multi-lib`
+options (e.g. thumb). you may check also `arm-none-eabi-gcc -print-multi-lib`
 to see what multilibs gcc uses
 
 _--with-gnu-ld:_
@@ -126,8 +126,8 @@ _--enable-languages=c:_
 
 _--with-newlib:_
 
->tell the buildsystem to use newlib headers wherever possible. for further reading you may check:  
-[This link](http://gcc.gnu.org/ml/gcc-help/2009-07/msg00368.html)
+>specifies that newlib is being used as the target C library. for further reading you may check:  
+[This link](http://gcc.gnu.org/install/configure.html)
 
 _--with-system-zlib:_
 
@@ -140,9 +140,11 @@ for further reading you may check:
 
 _--with-headers="${PREFIX_REAL}/newlib_sources/newlib/libc/include":_
 
->reference path to the newlib
+>directory which holds the target #include files (obligatory). for further reading you may check:  
+[This link](http://gcc.gnu.org/install/configure.html)
 
-__Note 1:__ the switch `--enable-interwork` does not have any effect
+
+__Note 1:__ the switch `--enable-interwork` does not have any effect (tbd)
 
 
 ## TODO
