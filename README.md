@@ -1,5 +1,4 @@
-arm-newlib-gcc-toolchain-builder
-================================
+# arm-newlib-gcc-toolchain-builder
 
 This collection of scripts builds a gcc/newlib based toolchain for
 bare metal programming of ARM based CPUs and MCUs.
@@ -22,8 +21,7 @@ Specifically, these scripts build
              "newlib C library"
 
 
-Usage
------
+## Usage
 
   * Edit `environ.sh` to adapt to your local requirements, especially
     the `$PREFIX_REAL` where to install the toolchain.
@@ -38,15 +36,14 @@ Usage
 
 
 
-How this works
---------------
+## How this works
 
 This works with two directories:
 
    `$BUILDSOURCES'  Source code, build directories, bootstrap install.
    `$PREFIX_REAL'   Where the real toolchain will be installed.
 
-The bootstrap installation of binutils and gccis located in a
+The bootstrap installation of binutils and gcc is located in a
 subdirectory of `$BUILDSOURCES'.
 
 The toolchain build works in the following stages:
@@ -60,27 +57,95 @@ bootstrap stage has been proven in many test to be necessary for a
 working toolchain to be built eventually.
 
 
-The bootstrap stage
-~~~~~~~~~~~~~~~~~~~
+### The bootstrap stage
 
-TBD: How we build bootstrap binutils/gcc and why. configure options. etc.
-
-
-newlib
-~~~~~~
-
-TBD: How we build newlib and why. configure options. etc.
+very simple. just build a "light edition" toolchain (without any libc) to cross compile working arm-libc.
+configuration should be noncritical. if you already have a working arm toolchain you can skip this step.
 
 
-The real toolchain
-~~~~~~~~~~~~~~~~~~
+### Newlib configure switches
 
-TBD: How we build the real toolchain and why. configure options. etc.
+_--disable-newlib-supplied-syscalls:_
+
+>syscalls to the operating system must be served by user code.
+it is the users responsibility to implement customized syscall stubs.
+newlib shall not provide any syscall implementation because a syscall
+is strongly hardware dependant
+
+_--enable-multilib:_
+
+>compile libraries multiple times for different build
+options (e.g. thumb). you may check also `arm-none-eabi-gcc -print-multi-lib`
+to see what multilibs gcc uses
+
+_--with-gnu-ld:_
+
+>buildsystem assumes that the GNU linker is being used
+
+_--with-gnu-as:_
+
+>buildsystem assumes that the GNU assembler is being used
+
+_--disable-newlib-io-float:_
+
+>disable printf/scanf family float support (status: tbd)
+
+_--disable-werror:_
+
+>do not cancel the build on warnings
+
+__Note 1:__ the switch `--enable-interwork` does not have any effect
+
+__Note 2:__ for targets `#if __ARM_ARCH__ < 5` like ARM7TDMI (non-FPU) newlib will handle
+float as soft in ieee754-sf.S
 
 
+### Binutils and GCC configure switches
 
-TODO
-----
+_--enable-multilib:_
+
+>compile libraries multiple times for different build
+options (e.g. thumb etc.). you may check also `arm-none-eabi-gcc -print-multi-lib`
+to see what multilibs gcc uses
+
+_--with-gnu-ld:_
+
+>buildsystem assumes that the GNU linker is being used
+
+_--with-gnu-as:_
+
+>buildsystem assumes that the GNU assembler is being used
+
+_--disable-werror:_
+
+>do not cancel the build on warnings
+
+_--enable-languages=c:_
+
+>enable language support for c (cross gcc)
+
+_--with-newlib:_
+
+>tell the buildsystem to use newlib headers wherever possible. for further reading you may check:  
+[This link](http://gcc.gnu.org/ml/gcc-help/2009-07/msg00368.html)
+
+_--with-system-zlib:_
+
+>if we build gcc & newlib for bare metal targets we do not have any linker file nor any crtxx.o.
+therefore we must avoid some buildsystem configure scripts trying to do a link test.
+up to now there is no direct solution for that circumstance. as a workaround we link to the
+system installed copy of the Zlib library rather than gccs internal version.
+for further reading you may check:   
+[This link](http://gcc.gnu.org/ml/gcc/2008-03/msg00515.html)
+
+_--with-headers="${PREFIX_REAL}/newlib_sources/newlib/libc/include":_
+
+>reference path to the newlib
+
+__Note 1:__ the switch `--enable-interwork` does not have any effect
+
+
+## TODO
 
   * Sort configure options for bootgcc and gcc and compare
     differences.
