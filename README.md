@@ -40,8 +40,8 @@ Specifically, these scripts build
 
 This works with two directories:
 
-   `$BUILDSOURCES`  Source code, build directories, bootstrap install.
-   `$PREFIX_REAL`   Where the real toolchain will be installed.
+  * `$BUILDSOURCES` Source code, build directories, bootstrap install.
+  * `$PREFIX_REAL`  Where the real toolchain will be installed.
 
 The bootstrap installation of binutils and gcc is located in a
 subdirectory of `$BUILDSOURCES`.
@@ -57,11 +57,13 @@ bootstrap stage has been proven in many test to be necessary for a
 working toolchain to be built eventually.
 
 
+
 ### The bootstrap stage
 
 very simple. just build a "light edition" toolchain (without any libc)
 in order to cross compile a working arm-libc. configuration should be
 noncritical. if you already have a working arm toolchain you can skip this step.
+
 
 
 ### Newlib configure switches
@@ -100,6 +102,7 @@ documented nor available in the configure scripts and is therefore removed (20-J
 
 __Note 2:__ for targets `#if __ARM_ARCH__ < 5` like ARM7TDMI (non-FPU) newlib
 will emulate float in ieee754-sf.S
+
 
 
 ### Binutils and GCC configure switches
@@ -152,6 +155,8 @@ reading you may check:
 __Note 1:__ the often mentioned arm/tumb switch `--enable-interwork` is neither
 documented nor available in the configure scripts and is therefore removed (20-Jul-2012 samplemaker)   
 See: [This link](http://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html) and [This link](http://gcc.gnu.org/install/configure.html)   
+
+
 
 ## TODO
 
