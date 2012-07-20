@@ -17,7 +17,6 @@ run_configure \
     --target="$TARGET" \
     --prefix="$PREFIX_REAL" \
     --disable-newlib-supplied-syscalls \
-    --enable-interwork \
     --enable-multilib \
     --with-gnu-ld \
     --with-gnu-as \

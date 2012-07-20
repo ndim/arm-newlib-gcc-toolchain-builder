@@ -59,8 +59,9 @@ working toolchain to be built eventually.
 
 ### The bootstrap stage
 
-very simple. just build a "light edition" toolchain (without any libc) in order to cross compile a working arm-libc.
-configuration should be noncritical. if you already have a working arm toolchain you can skip this step.
+very simple. just build a "light edition" toolchain (without any libc)
+in order to cross compile a working arm-libc. configuration should be
+noncritical. if you already have a working arm toolchain you can skip this step.
 
 
 ### Newlib configure switches
@@ -94,10 +95,11 @@ _--disable-werror:_
 
 >do not cancel the build on warnings
 
-__Note 1:__ the switch `--enable-interwork` does not have any effect (tbd)
+__Note 1:__ the often mentioned arm/tumb switch `--enable-interwork` is neither
+documented nor available in the configure scripts and is therefore removed (20-Jul-2012 samplemaker)
 
-__Note 2:__ for targets `#if __ARM_ARCH__ < 5` like ARM7TDMI (non-FPU) newlib will handle
-float as soft in ieee754-sf.S
+__Note 2:__ for targets `#if __ARM_ARCH__ < 5` like ARM7TDMI (non-FPU) newlib
+will emulate float in ieee754-sf.S
 
 
 ### Binutils and GCC configure switches
@@ -126,26 +128,30 @@ _--enable-languages=c:_
 
 _--with-newlib:_
 
->specifies that newlib is being used as the target C library. for further reading you may check:  
+>specifies that newlib is being used as the target C library. for further
+reading you may check:  
 [This link](http://gcc.gnu.org/install/configure.html)
 
 _--with-system-zlib:_
 
->if we build gcc & newlib for bare metal targets we do not have any linker file nor any crtxx.o.
-therefore we must avoid some buildsystem configure scripts trying to do a link test.
-up to now there is no direct solution for that circumstance. as a workaround we link to the
-system installed copy of the Zlib library rather than gccs internal version.
-for further reading you may check:   
+>if we build gcc & newlib for bare metal targets we do not have any linker
+file nor any crtxx.o. therefore we must avoid some buildsystem configure
+scripts trying to do a link test. up to now there is no direct solution for
+that circumstance. as a workaround we link to the system installed copy of
+the Zlib library rather than gccs internal version. for further reading you
+may check:   
 [This link](http://gcc.gnu.org/ml/gcc/2008-03/msg00515.html)
 
 _--with-headers="${PREFIX_REAL}/newlib_sources/newlib/libc/include":_
 
->directory which holds the target #include files (obligatory). for further reading you may check:  
+>directory which holds the target #include files (obligatory). for further
+reading you may check:  
 [This link](http://gcc.gnu.org/install/configure.html)
 
 
-__Note 1:__ the switch `--enable-interwork` does not have any effect (tbd)
-
+__Note 1:__ the often mentioned arm/tumb switch `--enable-interwork` is neither
+documented nor available in the configure scripts and is therefore removed (20-Jul-2012 samplemaker)   
+See: [This link](http://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html) and [This link](http://gcc.gnu.org/install/configure.html)   
 
 ## TODO
 
