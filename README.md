@@ -66,13 +66,6 @@ noncritical. if you already have a working arm toolchain you can skip this step.
 
 ### Newlib configure switches
 
-_--disable-newlib-supplied-syscalls:_
-
->syscalls to the operating system must be served by user code.
-it is the users responsibility to implement customized syscall stubs.
-newlib shall not provide any syscall implementation because a syscall
-is strongly hardware dependant
-
 _--enable-multilib:_
 
 >compile libraries multiple times for different build
@@ -87,13 +80,20 @@ _--with-gnu-as:_
 
 >buildsystem assumes that the GNU assembler is being used
 
+_--disable-werror:_
+
+>do not cancel the build on warnings
+
 _--disable-newlib-io-float:_
 
 >disable printf/scanf family float support (status: tbd)
 
-_--disable-werror:_
+_--disable-newlib-supplied-syscalls:_
 
->do not cancel the build on warnings
+>syscalls to the operating system must be served by user code.
+it is the users responsibility to implement customized syscall stubs.
+newlib shall not provide any syscall implementation because a syscall
+is strongly hardware dependant
 
 __Note 1:__ the often mentioned arm/tumb switch `--enable-interwork` is neither
 documented nor available in the configure scripts and is therefore removed (20-Jul-2012 samplemaker)
