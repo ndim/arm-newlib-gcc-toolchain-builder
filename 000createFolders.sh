@@ -7,7 +7,7 @@ if [[ "$TARGET" == ""  || "$PREFIX_REAL" == "" || "$PREFIX_BOOT" == "" ]] ; then
 	echo "You need to set: TARGET and PREFIX_REAL and PREFIX_BOOT in ./environ.sh !"; exit 0;
 fi
 
-sources="binutils-2.22 gcc-4.7.1 gdb-7.4.1 newlib-1.20.0"
+sources="binutils-2.22 gcc-4.7.3 gdb-7.4.1 newlib-1.20.0"
 
 # check for sources before we go on.
 for src in $sources; do
