@@ -9,6 +9,6 @@ wget --continue \
      http://ftp.gnu.org/gnu/binutils/binutils-2.22.tar.bz2 \
      http://ftp.gnu.org/gnu/gcc/gcc-4.7.3/gcc-4.7.3.tar.bz2 \
      ftp://sources.redhat.com/pub/newlib/newlib-1.20.0.tar.gz \
-     http://ftp.gnu.org/gnu/gdb/gdb-7.4.1.tar.bz2
+     http://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.bz2
 
 echo "Now call 000createFolders.sh (or make)"
