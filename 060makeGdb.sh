@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# note:  libexpat must be specified to get full support for memory maps sent to GDB from OpenOCD. you must install the "expat-devel"
+
+
 set -e
 
 . ./environ.sh
@@ -15,6 +19,7 @@ run_configure \
     --enable-multilib \
     --with-gnu-ld \
     --with-gnu-as \
+    --with-libexpat \
     --disable-werror
 
 run_make all install
